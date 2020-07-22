@@ -11,6 +11,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { GraficaUmComponent } from './grafica-um/grafica-um.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from './../shared/shared.module';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 // Vamos usar neste modulo los componentes, si precisamos usarlos em outros modulos precisamos exportarlos
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SharedModule } from './../shared/shared.module';
     DashboardComponent,
     ProgressComponent,
     GraficaUmComponent,
-    PagesComponent
+    PagesComponent,
+    AccountSettingsComponent
   ],
   imports: [
     CommonModule,
