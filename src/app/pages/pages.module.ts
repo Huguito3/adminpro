@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../components/components.module';
 
 
 import { RouterModule} from '@angular/router';
@@ -10,7 +11,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { GraficaUmComponent } from './grafica-um/grafica-um.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from './../shared/shared.module';
-//Vamos usar neste modulo los componentes, si precisamos usarlos em outros modulos precisamos exportarlos
+// Vamos usar neste modulo los componentes, si precisamos usarlos em outros modulos precisamos exportarlos
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SharedModule } from './../shared/shared.module';
     CommonModule,
     SharedModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ComponentsModule
   ],
   exports: [
     DashboardComponent,

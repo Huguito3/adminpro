@@ -8,20 +8,20 @@ import { Component } from '@angular/core';
 })
 export class ProgressComponent {
 
-  progreso: number = 50;
+  // tslint:disable-next-line: no-inferrable-types
+  progreso1: number = 50;
+  // tslint:disable-next-line: no-inferrable-types
+  progreso2: number = 25;
 
-  get getPorcentaje() {
-    return `${this.progreso}%`;
+  get getPorcentaje1(): string {
+    return `${this.progreso1}%`;
+  }
+  get getPorcentaje2(): string {
+    return `${this.progreso2}%`;
   }
 
-  cambiarValor(valor: number) {
-    if (valor >= 0 && this.progreso >= 100) {
-      return this.progreso = 100;
-    }
-    if (this.progreso <= 0 && valor <= 0) {
-      return this.progreso = 0;
-    }
-    this.progreso += valor;
-  }
+cambioValorHijo(valor: number){
+  console.log(valor);
+}
 
 }
