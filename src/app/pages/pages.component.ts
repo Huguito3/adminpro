@@ -1,4 +1,7 @@
+import { SettingsService } from './../services/settings.service';
 import { Component, OnInit } from '@angular/core';
+
+declare function customInitFunctions();
 
 @Component({
   selector: 'app-pages',
@@ -7,15 +10,18 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class PagesComponent implements OnInit {
-  public linkTheme = document.querySelector('#theme');
-  public defaultTheme = './assets/css/colors/default-dark.css';
-  constructor() { }
+  // public linkTheme = document.querySelector('#theme');
+  // public defaultTheme = './assets/css/colors/default-dark.css';
+  constructor(private settings: SettingsService) {
+
+  }
 
   ngOnInit(): void {
 
-
-    const urlLocalStorage = localStorage.getItem('theme');
-    this.linkTheme.setAttribute('href', urlLocalStorage != null ? urlLocalStorage : this.defaultTheme);
+//Precisamos cargar los js del diseno, este js no es angular. Precisamos inicializar las funciones para que sean uilziadas
+customInitFunctions();
+    // const urlLocalStorage = localStorage.getItem('theme');
+    // this.linkTheme.setAttribute('href', urlLocalStorage != null ? urlLocalStorage : this.defaultTheme);
 
   }
 

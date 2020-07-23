@@ -12,12 +12,12 @@ export class DonaComponent implements OnInit {
 
   @Input() titulo = 'Sin Titulo';
   @Input() labels: string[] = ['No Definido', 'No Definido', 'No Definido'];
-  @Input() data: MultiDataSet = [100, 100, 100];
+  @Input() data: MultiDataSet;
   public doughnutChartLabels: Label[];
   public doughnutChartData: MultiDataSet = [
-    [350, 450, 100]
+    [100, 100, 100]
   ];
-  //['Download Sales', 'In-Store Sales', 'Mail-Order Sales']
+  // ['Download Sales', 'In-Store Sales', 'Mail-Order Sales']
   // public doughnutChartType: ChartType = 'doughnut';
   public colors: Color[] = [
     { backgroundColor: ['#6857E6', '#009FEE', '#F02059'] }
@@ -25,7 +25,10 @@ export class DonaComponent implements OnInit {
   ngOnInit(): void {
     // this.titulo = 'Sin Titulo';
     this.doughnutChartLabels = this.labels;
-    this.doughnutChartData = this.data;
+    console.log(this.data);
+    if (this.data) {
+      this.doughnutChartData = this.data;
+    }
   }
 
 }
