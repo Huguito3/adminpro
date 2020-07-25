@@ -12,6 +12,8 @@ import { GraficaUmComponent } from './grafica-um/grafica-um.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from './../shared/shared.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 // Vamos usar neste modulo los componentes, si precisamos usarlos em outros modulos precisamos exportarlos
 
 @NgModule({
@@ -20,7 +22,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     ProgressComponent,
     GraficaUmComponent,
     PagesComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    PromesasComponent,
+    RxjsComponent
   ],
   imports: [
     CommonModule,
