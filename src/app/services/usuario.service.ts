@@ -1,6 +1,7 @@
+import { Usuario } from './../models/usuario.model';
 import { Router } from '@angular/router';
 import { LoginForm } from './../interfaces/login-form.interface';
-import { Observable, of } from 'rxjs';
+import { Observable, Observer, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { RegisterForm } from './../interfaces/register-form.interface';
@@ -15,6 +16,7 @@ declare const gapi: any;
 })
 export class UsuarioService {
   public auth2: any;
+  public usuario: Usuario;
   constructor(private http: HttpClient, private router: Router, private ngZone: NgZone) {
     this.googleInit();
   }
@@ -27,6 +29,8 @@ export class UsuarioService {
       }
     }).pipe(
       tap((resp: any) => {
+        const { email, google, nombre, role, uid, image } = resp.usuario;
+        this.usuario = new Usuario(nombre, email, '', google, image, role, uid);
         localStorage.setItem('token', resp.token);
       }), map(resp => true), catchError(
         // el operador of me permite retornar un observable con el valor que le ponemos dentro
@@ -77,7 +81,7 @@ export class UsuarioService {
     });
   }
 
-  googleInit() {
+  googleInit(): Promise<any> {
     return new Promise(resolve => {
       gapi.load('auth2', () => {
         // Retrieve the singleton for the GoogleAuth library and set up the client.

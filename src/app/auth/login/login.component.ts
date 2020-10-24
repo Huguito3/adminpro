@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.formSubmitted = true;
-    console.log(this.loginForm.invalid);
     if (this.loginForm.invalid) {
       return;
     }
