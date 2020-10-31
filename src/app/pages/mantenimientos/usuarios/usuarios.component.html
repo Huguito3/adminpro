@@ -37,7 +37,7 @@
                 <th class="w100">Avatar</th>
                 <th >Correo</th>
                 <th >Nombre</th>
-                <th class="w100">Role</th>
+                <th class="w140">Role</th>
                 <th class="w100">Auth</th>
                 <th class="text-nowrap w100">Acciones</th>
               </tr>
@@ -45,20 +45,23 @@
             <tbody>
               <tr *ngFor="let usuario of usuarios" >
                 <td class="text-center">
-                  <img [src]="usuario.imagenUrl" alt="Avatar de usuario" class="avatar">
+                  <img [src]="usuario.imagenUrl" alt="Avatar de usuario" class="avatar cursor" (click)="abrirModal(usuario)" >
                 </td>
                 <td>{{usuario.email}}</td>
                 <td>{{usuario.nombre}}</td>
-                <td>{{usuario.role}}</td>
                 <td>
+                  <select class="form-control" [(ngModel)]="usuario.role" (change)="cambiarRole(usuario)">
+                    <option value="ADMIN_ROLE">Admin</option>
+                    <option value="USER_ROLE">User</option>
+                  </select>
+                  <!-- {{usuario.role}} -->
+                </td>
+                <td class=" text-center" >
                   <span *ngIf="usuario.google"  class="label label-danger">Google</span>
                   <span *ngIf="!usuario.google" class="label label-info">Email</span>
                 </td>
-                <td class="text-nowrap" >
-                  <a
-                  href="#" data-toggle="tooltip" data-original-title="Edit">
-                    <i class="fa fa-pencil text-inverse m-r-10"></i>
-                  </a>
+                <td class="text-nowrap text-center" >
+
                   <a data-toggle="tooltip" data-original-title="Borrar"
                   class="cursor"
                    (click)="eliminarUsuario(usuario)" >

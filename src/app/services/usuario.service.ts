@@ -71,11 +71,7 @@ export class UsuarioService {
       ...data,
       role: this.usuario.role
     };
-    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, {
-      headers: {
-        'x-token': this.token
-      }
-    });
+    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers);
   }
 
   loginUsuario(formdata: LoginForm): Observable<any> {
@@ -144,6 +140,10 @@ export class UsuarioService {
 
   eliminarUsuario(usuario: Usuario) {
     return this.http.delete<any>(`${base_url}/usuarios/${usuario.uid}`, this.headers);
+  }
+
+  guardarUsuario(usuario: Usuario): Observable<any> {
+    return this.http.put(`${base_url}/usuarios/${usuario.uid}`, usuario, this.headers);
   }
 
 }
