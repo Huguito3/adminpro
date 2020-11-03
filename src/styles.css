@@ -34,6 +34,10 @@
   width: 75px;
 }
 
+.w200 {
+  width: 200px;
+}
+
 .fondo-modal-imagen {
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
