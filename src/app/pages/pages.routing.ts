@@ -12,6 +12,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 
 const routes: Routes = [
   {// colocnado el path dashboard arriba del children, en vez de dejarlo como ''. ahora todas las rutas de
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil de usuario' }  },
       { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuario de aplicacion' }  },
       { path: 'medicos', component: MedicosComponent, data: { titulo: 'Medicos' }  },
+      { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Medico' }  },
       { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Hospitales' }  },
     ]
   }

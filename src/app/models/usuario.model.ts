@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 
 const base_url = environment.base_url;
 
@@ -13,6 +13,7 @@ export class Usuario {
     public uid?: string
   ) { }
 
+  // con el pipe creado este metodo no es mas necesario
   get imagenUrl(): string {
 
     if (!this.image) {

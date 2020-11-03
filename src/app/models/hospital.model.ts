@@ -2,7 +2,7 @@
 
 // const base_url = environment.base_url;
 
-interface HospitalUser {
+export interface HospitalUser {
   _id: string;
   nombre: string;
   image: string;

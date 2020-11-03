@@ -39,4 +39,17 @@ export class HospitalService {
     //     (resp: { ok: boolean, hospitales: Hospital[] }) => resp.hospitales)
     //   );
   }
+
+  crearHospitales(nombre: string): Observable<any> {
+    return this.http.post(`${base_url}/hospital`, {nombre}, this.headers);
+  }
+
+  actualizarHospitales(id: string, nombre: string): Observable<any> {
+    return this.http.put(`${base_url}/hospital/${id}`, {nombre}, this.headers);
+  }
+
+  borrarHospitales(id: string): Observable<any> {
+    return this.http.delete(`${base_url}/hospital/${id}`, this.headers);
+  }
+
 }
