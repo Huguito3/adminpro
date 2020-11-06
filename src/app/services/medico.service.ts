@@ -35,7 +35,15 @@ export class MedicoService {
     );
   }
 
-  crearMedico(medico: Medico): Observable<any> {
+  obtenerMedicoByID(id: string): Observable<any> {
+    return this.http.get(`${base_url}/medicos/${id}`, this.headers).pipe(
+      map((resp: any) => {
+        return resp.medico;
+      })
+    );
+  }
+
+  crearMedico(medico: { nombre: string, hospital: string }): Observable<any> {
     return this.http.post(`${base_url}/medicos`, medico, this.headers);
   }
 
