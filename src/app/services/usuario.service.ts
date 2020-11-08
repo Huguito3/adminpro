@@ -1,3 +1,4 @@
+
 import { CargarUsuario } from './../interfaces/cargar-usuarios.interface';
 import { Usuario } from './../models/usuario.model';
 import { Router } from '@angular/router';
@@ -26,6 +27,9 @@ export class UsuarioService {
     return localStorage.getItem('token') || '';
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.usuario.role;
+  }
   get uid(): string {
     return this.usuario.uid || '';
   }
@@ -49,6 +53,7 @@ export class UsuarioService {
         const { email, google, nombre, role, uid, image = '' } = resp.usuario;
         this.usuario = new Usuario(nombre, email, '', google, image, role, uid);
         localStorage.setItem('token', resp.token);
+        localStorage.setItem('menu', JSON.stringify(resp.menu));
         return true;
       }), catchError(
         // el operador of me permite retornar un observable con el valor que le ponemos dentro
@@ -61,6 +66,7 @@ export class UsuarioService {
     return this.http.post(`${base_url}/usuarios`, formdata).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.msg);
+        localStorage.setItem('menu', JSON.stringify(resp.menu));
       })
     );
 
@@ -79,6 +85,7 @@ export class UsuarioService {
     return this.http.post(`${base_url}/login`, formdata).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.msg);
+        localStorage.setItem('menu', JSON.stringify(resp.menu));
       })
     );
   }
@@ -109,12 +116,14 @@ export class UsuarioService {
       tap((resp: any) => {
 
         localStorage.setItem('token', resp.token);
+        localStorage.setItem('menu', JSON.stringify(resp.menu));
       })
     );
   }
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
     this.auth2.signOut().then(() => {
       // se utiliza el ng zone porque al llamar auth 2 estoy llamandouna libreria fuera de angular, y el this.router
       // es codigo de nagular, precisa englobar para asegurarnos de que no haya problemas.

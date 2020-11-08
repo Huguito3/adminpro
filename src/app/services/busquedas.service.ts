@@ -45,8 +45,12 @@ export class BusquedasService {
 
   private transformarMedicos(resultados: any[]): Medico[] {
     return resultados.map(
-      user => new Medico(user.nombre, user.usuario, user.hospital, user.image,  user._id
+      user => new Medico(user.nombre, user.usuario, user.hospital, user.image, user._id
       ));
+  }
+
+  busquedaGlobal(termino: string): Observable<any> {
+    return this.http.get<any[]>(`${base_url}/todo//${termino}`, this.headers);
   }
 
   buscarUsuarios(tipo: 'usuarios' | 'medicos' | 'hospitales', termino: string): Observable<any> {
